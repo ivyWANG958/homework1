@@ -1,0 +1,125 @@
+<html>
+
+<head>
+    <button onclick="myFunction()">Try it</button>
+    <!-- <p id="demo"></p> -->
+
+
+
+    <canvas id="canvas" style="border:2px " width="1200" height="3000"></canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        // function myFunction() {
+        //     var txt;
+        //     var person = prompt("Please enter your name:", "");
+        //     if (person == null || person == "") {
+        //         txt = "User cancelled the prompt.";
+        //     } else {
+        //         txt = "Hello " + person + "! How are you today?";
+        //     }
+        //     document.getElementById("demo").innerHTML = txt;
+        // }
+
+
+        // var canvas = document.getElementById('canvas');
+        // var ctx = canvas.getContext('2d');
+
+        var data = '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="300">' +
+            '<foreignObject width="100%" height="100%">' +
+            '<div xmlns="http://www.w3.org/1999/xhtml" style="font-size:20px margin= 60px border:20px">' +
+            'Morning!' +
+            '</div>' +
+            '</foreignObject>' +
+            '</svg>';
+
+        var DOMURL = window.URL || window.webkitURL || window;
+
+        var img = new Image();
+        var svg = new Blob([data], {
+            type: 'image/svg+xml;charset=utf-8'
+        });
+        var url = DOMURL.createObjectURL(svg);
+
+        img.onload = function() {
+            ctx.drawImage(img, 0, 0);
+            DOMURL.revokeObjectURL(url);
+
+
+            var txt;
+            var person = prompt("what's ur name?:", "");
+            if (person == null || person == "") {
+                txt = "User cancelled the prompt.";
+            } else {
+                txt = "Hello " + person + "! How are you today?";
+            }
+            document.getElementById("demo").innerHTML = txt;
+
+        }
+
+        img.src = url;
+    </script>
+
+
+
+
+</head>
+
+
+
+<body onload="draw();">
+
+
+    <script>
+        function draw() {
+            var canvas = document.getElementById('canvas');
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+
+
+                ctx.beginPath();
+                ctx.moveTo(150, 50);
+                ctx.quadraticCurveTo(50, 50, 50, 125);
+                ctx.quadraticCurveTo(50, 200, 100, 200);
+                ctx.quadraticCurveTo(100, 240, 60, 250);
+                ctx.quadraticCurveTo(120, 240, 130, 200);
+                ctx.quadraticCurveTo(250, 200, 250, 125);
+                ctx.quadraticCurveTo(250, 50, 150, 50);
+                ctx.stroke();
+
+
+                ctx.beginPath();
+                ctx.moveTo(1090, 310);
+                ctx.quadraticCurveTo(1190, 310, 1190, 385);
+                ctx.quadraticCurveTo(1190, 460, 1140, 460);
+                ctx.quadraticCurveTo(1140, 500, 1180, 510);
+                ctx.quadraticCurveTo(1120, 500, 1110, 460);
+                ctx.quadraticCurveTo(990, 460, 990, 385);
+                ctx.quadraticCurveTo(990, 310, 1090, 310);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(1085, 360);
+                ctx.bezierCurveTo(1085, 357, 1090, 345, 1110, 345);
+                ctx.bezierCurveTo(1140, 345, 1140, 382.5, 1140, 382.5);
+                ctx.bezierCurveTo(1140, 400, 1120, 422, 1085, 440);
+                ctx.bezierCurveTo(1050, 422, 1030, 400, 1030, 382.5);
+                ctx.bezierCurveTo(1030, 382.5, 1030, 345, 1060, 345);
+                ctx.bezierCurveTo(1075, 345, 1085, 357, 1085, 360);
+                ctx.stroke();
+
+
+            }
+        }
+    </script>
+
+
+
+</body>
+
+
+
+
+
+</html>
